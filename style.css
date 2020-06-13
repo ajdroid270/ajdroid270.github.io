@@ -1,3 +1,39 @@
 .height-1{
     height: 100px;
 }
+
+.col-3 {
+    margin-bottom: 2rem;
+}
+
+#tile1{
+    background-color: antiquewhite;
+}
+
+#tile2{
+    background-color: aqua;
+}
+
+#tile3{
+    background-color: aquamarine;
+}
+
+#tile4{
+    background-color: azure;
+}
+
+#tile5{
+    background-color: beige;
+}
+
+#tile6{
+    background-color: bisque;
+}
+
+#tile7{
+    background-color: blanchedalmond;
+}
+
+#tile8{
+    background-color: blueviolet;
+}
