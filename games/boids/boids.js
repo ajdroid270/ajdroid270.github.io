@@ -1,9 +1,18 @@
 // Size of canvas. These get updated to fill the whole browser.
-let width = 150;
-let height = 150;
+var width = 1000;
+var height = 500;
 
 const numBoids = 100;
-const visualRange = 75;
+var visualRange = 75;
+const setVisualRange = (n) => {
+  visualRange = n;
+  document.getElementById("visualRangeLabel").innerText = `Visual Range: ${n}`;
+}
+setVisualRange(75);
+document.getElementById("visualRangeSlider").addEventListener("change", (e) => {
+  console.log(e);
+  setVisualRange(e.target.valueAsNumber);
+});
 
 var boids = [];
 
@@ -22,7 +31,7 @@ function initBoids() {
 function distance(boid1, boid2) {
   return Math.sqrt(
     (boid1.x - boid2.x) * (boid1.x - boid2.x) +
-      (boid1.y - boid2.y) * (boid1.y - boid2.y),
+    (boid1.y - boid2.y) * (boid1.y - boid2.y),
   );
 }
 
@@ -39,9 +48,11 @@ function nClosestBoids(boid, n) {
 // Called initially and whenever the window resizes to update the canvas
 // size and width/height variables.
 function sizeCanvas() {
+  width = 1000;
+  height = 600;
   const canvas = document.getElementById("boids");
-  width = window.innerWidth;
-  height = window.innerHeight;
+  window.innerWidth < width ? width = window.innerWidth : null;
+  window.innerHeight < height ? height = window.innerHeight : null;
   canvas.width = width;
   canvas.height = height;
 }
@@ -92,9 +103,20 @@ function flyTowardsCenter(boid) {
   }
 }
 
+var minDistance = 20; // The distance to stay away from other boids
+const setMinDistance = (n) => {
+  minDistance = n;
+  document.getElementById("separationSlider").innerText = `Separation: ${n}`
+}
+setMinDistance(minDistance);
+document.getElementById("separationSlider").addEventListener("change", (e) => {
+  console.log(e);
+  setMinDistance(e.target.valueAsNumber);
+});
+
+
 // Move away from other boids that are too close to avoid colliding
 function avoidOthers(boid) {
-  const minDistance = 20; // The distance to stay away from other boids
   const avoidFactor = 0.05; // Adjust velocity by this %
   let moveX = 0;
   let moveY = 0;
@@ -149,7 +171,13 @@ function limitSpeed(boid) {
   }
 }
 
-const DRAW_TRAIL = false;
+var DRAW_TRAIL = false;
+const toggleDrawTrail = () => {
+  DRAW_TRAIL = !DRAW_TRAIL;
+  console.log({ DRAW_TRAIL })
+}
+
+document.getElementById("toggleTrails").addEventListener("click", toggleDrawTrail);
 
 function drawBoid(ctx, boid) {
   const angle = Math.atan2(boid.dy, boid.dx);
