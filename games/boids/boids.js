@@ -177,7 +177,12 @@ const toggleDrawTrail = () => {
   console.log({ DRAW_TRAIL })
 }
 
-document.getElementById("toggleTrails").addEventListener("click", toggleDrawTrail);
+document.getElementById("toggleTrails").addEventListener("click", function (e) {
+  toggleDrawTrail();
+  console.log(this);
+  this.classList.toggle("btn-primary");
+  this.classList.toggle("btn-secondary");
+});
 
 function drawBoid(ctx, boid) {
   const angle = Math.atan2(boid.dy, boid.dx);
