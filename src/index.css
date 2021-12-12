@@ -1,10 +1,45 @@
+:root.dark {
+  /* dark mode */
+  --bg-one: #292827;
+  --bg-two: #21201E;
+  --font-one: #ffffff;
+  --font-two: #9A9A9A;
+}
+
+:root.light {
+  --bg-one: #292827;
+  --bg-two: #21201E;
+  --font-one: #000000;
+  --font-two: #000000;
+}
+
+:root {
+  /* opacity */
+  --translucent: 0.5
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  width: 100%;
+}
+
+
 body {
+  width: 100%;
+  height: 100%;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--light--bg-one);
+  color: var(--font-one);
+  background-image: url("./assets/images/wallpaper-1.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 code {
